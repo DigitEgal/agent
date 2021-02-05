@@ -14,7 +14,7 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --verbose --release --all-features
+          args: --verbose --release
           override: true
       - uses: actions/upload-artifact@v2
         with:
