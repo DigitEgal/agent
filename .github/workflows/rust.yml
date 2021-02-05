@@ -20,14 +20,15 @@ jobs:
         with:
           path: ./target/release/agent
           if-no-files-found: error
-  - name: Nexus Repo Publish
-      uses: sonatype-nexus-community/nexus-repo-github-action@master
-      with:
-        serverUrl: https://repo.stackable.tech/
-        username: github
-        password: ${{ secrets.NEXUS_PASSWORD }}
-        format: maven2
-        repository: rpm-nightly
-        coordinates: groupId=com.example artifactId=app version=0.1.0
-        assets: extension=*
-       filename: ./target/release/agent
+
+      - name: Nexus Repo Publish
+        uses: sonatype-nexus-community/nexus-repo-github-action@master
+        with:
+          serverUrl: https://repo.stackable.tech/
+          username: github
+          password: ${{ secrets.NEXUS_PASSWORD }}
+          format: maven2
+          repository: rpm-nightly
+          coordinates: groupId=com.example artifactId=app version=0.1.0
+          assets: extension=*
+          filename: ./target/release/agent
