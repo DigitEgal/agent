@@ -14,18 +14,18 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release
+          args: --verbose --release
           override: true
       - uses: actions/upload-artifact@v2
         with:
-          path: /target/release/agent
+          path: ./target/release/agent
           if-no-files-found: error
 
 #- name: Nexus Repo Publish
 #    uses: sonatype-nexus-community/nexus-repo-github-action@master
 #    with:
 #      serverUrl: https://nexus.stackable.tech/
-#      username: admin
+#      username: github
 #      password: ${{ secrets.password }}
 #      format: maven2
 #      repository: maven-releases
