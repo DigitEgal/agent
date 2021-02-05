@@ -14,11 +14,11 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --verbose --release
+          args: --release
           override: true
       - uses: actions/upload-artifact@v2
         with:
-          path: target/*
+          path: /target/release/agent
           if-no-files-found: error
 
 #- name: Nexus Repo Publish
@@ -31,4 +31,4 @@ jobs:
 #      repository: maven-releases
 #      coordinates: groupId=com.example artifactId=app version=1.0.0
 #      assets: extension=jar
-#     filename: ./target/app-1.0.0.jar
+#     filename: ./target/release
