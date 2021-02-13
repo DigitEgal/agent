@@ -1,34 +1,47 @@
 name: simple rust build
 
-on: [push, pull_request]
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
 
 jobs:
-  build_and_test:
-    name: stackable agent
+  rustfmt:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    - run: rustup update stable && rustup default stable
+    - run: sudo apt-get install libdbus-1-dev pkg-config libdbus-1-3
+    - run: rustup component add rustfmt
+    - run: cargo fmt --all -- --check
+
+  clippy_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dbus dependencies
+        run: sudo apt-get install libdbus-1-dev pkg-config libdbus-1-3
+      - uses: actions/checkout@v1
       - uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
-      - uses: actions-rs/cargo@v1
+            toolchain: stable
+            components: clippy, rustfmt
+            override: true
+      - uses: actions-rs/clippy-check@v1
         with:
-          command: build
-          args: --verbose --release
-          override: true
-      - uses: actions/upload-artifact@v2
-        with:
-          path: ./target/release/agent
-          if-no-files-found: error
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: --all-features
 
-      - name: Nexus Repo Publish
-        uses: sonatype-nexus-community/nexus-repo-github-action@master
-        with:
-          serverUrl: https://repo.stackable.tech/
-          username: github
-          password: ${{ secrets.NEXUS_PASSWORD }}
-          format: maven2
-          repository: rpm-nightly
-          coordinates: groupId=com.example artifactId=app version=0.1.0
-          assets: extension=*
-          filename: ./target/release/agent
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dbus dependencies
+      run: sudo apt-get install libdbus-1-dev pkg-config libdbus-1-3
+    - name: Build
+      run: cargo build --verbose
+    - name: Run tests
+      run: cargo test --verbose
