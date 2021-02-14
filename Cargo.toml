@@ -3,6 +3,9 @@ name = "stackable-agent"
 version = "0.1.0"
 authors = ["Sönke Liebau <soenke.liebau@stackable.de>"]
 edition = "2018"
+description = "An Agent to orchestrate a big data tools"
+license     = "Apache-2.0"
+readme      = "README.md"
 
 [dependencies]
 # We are currently referencing the Krustlet directly from the repository, because some features that we are using have
@@ -33,6 +36,8 @@ phf = { version = "0.7.24", features = ["macros"] }
 dbus = "0.9.0"
 hostname = "0.3"
 shellexpand = "2.1"
+serializable_enum = "0.1.0"
+cargo_metadata = "0.10"
 
 [dev-dependencies]
 indoc = "1.0"
@@ -43,3 +48,15 @@ serde_yaml = "0.8"
 opt-level = "s"
 lto = true
 codegen-units = 1
+
+[package.metadata.rpm]
+package = "stackable-agent"
+
+[package.metadata.rpm.cargo]
+buildflags = ["--release"]
+
+#[package.metadata.rpm.targets]
+#./src/bin/generate_doc = { path = "/usr/bin/./src/bin/generate_doc" }
+#agent = { path = "/usr/bin/agent" }
+
+
