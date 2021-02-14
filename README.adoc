@@ -55,6 +55,9 @@ a|- libdbus-1-dev
 |Centos
 a|- dbus-devel
 
+|Os X 10.15.7
+a|- dbus
+
 |===
 
 
