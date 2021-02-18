@@ -55,8 +55,6 @@ package = "stackable-agent"
 [package.metadata.rpm.cargo]
 buildflags = ["--release"]
 
-#[package.metadata.rpm.targets]
-#./src/bin/generate_doc = { path = "/usr/bin/./src/bin/generate_doc" }
-#agent = { path = "/usr/bin/agent" }
-
-
+[package.metadata.rpm.targets]
+generate_doc = { path = "/usr/bin/./src/bin/generate_doc" }
+agent = { path = "/usr/bin/./src/bin/agent" }
