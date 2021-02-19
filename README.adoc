@@ -54,6 +54,8 @@ a|- libdbus-1-dev
 
 |Centos
 a|- dbus-devel
+a|- openssl-devel
+a|- make gcc
 
 |Os X 10.15.7
 a|- dbus
