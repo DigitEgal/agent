@@ -48,7 +48,6 @@ serde_yaml = "0.8"
 opt-level = "s"
 lto = true
 codegen-units = 1
-
 [package.metadata.rpm]
 package = "stackable-agent"
 
@@ -56,5 +55,5 @@ package = "stackable-agent"
 buildflags = ["--release"]
 
 [package.metadata.rpm.targets]
-generate_doc = { path = "/usr/bin/./src/bin/generate_doc" }
-agent = { path = "/usr/bin/./src/bin/agent" }
+generate_doc = { path = "/Users/Simon/Repo/agent/src/bin/generate_doc.rs" }
+agent = { path = "/Users/Simon/Repo/agent/src/bin/agent.rs" }

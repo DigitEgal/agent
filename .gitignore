@@ -17,3 +17,10 @@
 /target/release/generate_doc.d
 /target/release/libstackable_agent.d
 /target/release/libstackable_agent.rlib
+
+/target/release/rpmbuild/BUILD
+/target/release/rpmbuild/BUILDROOT
+/target/release/rpmbuild/SOURCES
+/target/release/rpmbuild/SPECS
+/target/release/rpmbuild/SRPMS
+/target/release/rpmbuild/tmp
