@@ -3,7 +3,7 @@ name: Centos8-Nightly
 on:
   push:
     branches:
-      - main
+      - feature/use-githubActions-for-build
   pull_request:
   workflow_dispatch:
 
