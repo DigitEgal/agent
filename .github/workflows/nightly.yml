@@ -14,17 +14,8 @@ jobs:
   build:
     runs-on: centos8
     steps:
-      - name: install rust
-        run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-      #- name: source cargo
-      #  run: source $HOME/.cargo/env
-      - name: install requierements
-        run: |
-            yum install -y rpm-build
-            yum install make gcc
-            yum install dbus-devel
-            yum install openssl-devel
-            cargo install cargo-rpm
       - uses: actions/checkout@v2
+      - name: install requierements
+        run: ~/.cargo/bin/cargo cargo install cargo-rpm
       - name: Build
         run: ~/.cargo/bin/cargo clean && cargo rpm build -v
