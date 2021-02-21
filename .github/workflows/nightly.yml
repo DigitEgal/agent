@@ -1,0 +1,22 @@
+name: Centos8-Nightly
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: centos8
+    steps:
+      - name: install cargo-rpm
+        run: |
+          cargo install cargo-rpm
+      - uses: actions/checkout@v2
+      - name: Build
+        run: ~/.cargo/bin/cargo clean && cargo rpm build -v

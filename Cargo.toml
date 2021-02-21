@@ -49,6 +49,8 @@ opt-level = "s"
 lto = true
 codegen-units = 1
 
+#https://crates.io/crates/cargo-rpm
+#https://docs.rs/cargo-rpm/0.8.0/cargo_rpm/
 [package.metadata.rpm]
 package = "stackable-agent"
 
