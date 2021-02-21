@@ -18,4 +18,4 @@ jobs:
       - name: install requierements
         run: ~/.cargo/bin/cargo install cargo-rpm
       - name: Build
-        run: ~/.cargo/bin/cargo clean && cargo rpm build -v
+        run: ~/.cargo/bin/cargo rpm build -v
