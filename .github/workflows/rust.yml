@@ -1,10 +1,10 @@
 name: simple rust build
 
 on:
-  push:
+  pull_request:
     branches: 
       - feature/use-githubActions-for-build
-  pull_request:
+
 
 env:
   CARGO_TERM_COLOR: always

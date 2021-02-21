@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: install cargo-rpm
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
           source $HOME/.cargo/env
           yum install -y rpm-build
           yum install make gcc
