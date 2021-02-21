@@ -16,6 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: install requierements
-        run: ~/.cargo/bin/cargo cargo install cargo-rpm
+        run: ~/.cargo/bin/cargo install cargo-rpm
       - name: Build
         run: ~/.cargo/bin/cargo clean && cargo rpm build -v
