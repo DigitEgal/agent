@@ -28,5 +28,4 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-echo %{_bindir}/*
-/scr/bin/*
+/scr/bin/agent
