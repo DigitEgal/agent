@@ -15,8 +15,6 @@ jobs:
     runs-on: centos8
     steps:
       - uses: actions/checkout@v2
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: install requierements
         run: ~/.cargo/bin/cargo install cargo-rpm
       - name: Build
