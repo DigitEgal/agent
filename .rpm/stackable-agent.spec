@@ -22,6 +22,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 rm -rf %{buildroot}
 mkdir -p %{buildroot}
 cp -a * %{buildroot}
+ls -al %{buildroot}
 
 %clean
 rm -rf %{buildroot}
