@@ -28,4 +28,5 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-/src/bin/*
+echo %{_bindir}/*
+/scr/bin/*

@@ -58,4 +58,4 @@ package = "stackable-agent"
 buildflags = ["--release"]
 
 [package.metadata.rpm.targets]
-agent = { path = "/repo/agent/src/bin/agent.rs" }
+agent = { path = "/src/bin/agent.rs" }
