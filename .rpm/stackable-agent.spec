@@ -29,4 +29,4 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-/scr/bin/*
+/src/bin/*
