@@ -1,4 +1,4 @@
-name: Centos8-Nightly
+name: Centos8-rpm
 
 on:
   push:
