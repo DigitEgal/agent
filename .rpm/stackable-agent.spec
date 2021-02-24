@@ -1,6 +1,7 @@
 %define __spec_install_post %{nil}
 %define __os_install_post %{_dbpath}/brp-compress
 %define debug_package %{nil}
+BuildRequires: systemd-rpm-macros
 
 Name: stackable-agent
 Summary: An Agent to orchestrate a big data tools
@@ -24,9 +25,15 @@ mkdir -p %{buildroot}
 cp -a * %{buildroot}
 ls -al %{buildroot}
 
+%post
+%systemd_post stackable-agent.service
+    /usr/bin/systemctl daemon-reload
+
 %clean
 rm -rf %{buildroot}
 
 %files
+/etc/stackableagent/agent.conf
+/etc/systemd/system/stackable-agent.service
+
 %defattr(-,root,root,-)
-/src/bin/*
