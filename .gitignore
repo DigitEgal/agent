@@ -1,1 +1,26 @@
-target/
+.idea
+
+# target folder
+/target/.rustc_info.json
+/target/CACHEDIR.TAG
+
+/target/release/.fingerprint/*
+/target/release/build/*
+/target/release/deps/*
+/target/release/examples/*
+/target/release/incremental/*
+
+/target/release/.cargo-lock
+/target/release/agent
+/target/release/agent.d
+/target/release/generate_doc
+/target/release/generate_doc.d
+/target/release/libstackable_agent.d
+/target/release/libstackable_agent.rlib
+
+/target/release/rpmbuild/BUILD
+/target/release/rpmbuild/BUILDROOT
+/target/release/rpmbuild/SOURCES
+/target/release/rpmbuild/SPECS
+/target/release/rpmbuild/SRPMS
+/target/release/rpmbuild/tmp

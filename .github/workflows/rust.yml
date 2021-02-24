@@ -54,3 +54,33 @@ jobs:
       - uses: actions-rs/audit-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  build_and_test:
+    name: stackable agent
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --verbose --release
+          override: true
+      #- uses: actions/upload-artifact@v2
+      #  with:
+      #    path: ./target/release/agent
+      #    if-no-files-found: error
+
+      - name: Nexus Repo Publish
+        uses: sonatype-nexus-community/nexus-repo-github-action@master
+        with:
+          serverUrl: https://repo.stackable.tech/
+          username: github
+          password: ${{ secrets.NEXUS_PASSWORD }}
+          format: maven2
+          repository: rpm-nightly
+          coordinates: groupId=com.example artifactId=app version=0.1.0
+          assets: extension=*
+          filename: ./target/release/agent

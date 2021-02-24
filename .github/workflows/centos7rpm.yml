@@ -1,0 +1,21 @@
+name: Centos7-rpm
+
+on:
+  push:
+    branches:
+      - feature/use-githubActions-for-build
+  pull_request:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: centos7
+    steps:
+      - uses: actions/checkout@v2
+      - name: install requierements
+        run: ~/.cargo/bin/cargo install cargo-rpm
+      - name: Build
+        run: ~/.cargo/bin/cargo rpm build -v
