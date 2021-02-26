@@ -36,9 +36,9 @@ cp -a * %{buildroot}
 #install -m 0755 %{name} /opt/stackable-agent-<version>/agent
 sleep 10
 
-echo "start clean"
-%clean
-rm -rf %{buildroot}
+#echo "start clean"
+#%clean
+#rm -rf %{buildroot}
 
 #https://rpm-packaging-guide.github.io/#rpm-packaging-tools --> go to Scriptlets and Triggers for systemd installation
 echo "start systemd"
