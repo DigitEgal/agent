@@ -32,24 +32,20 @@ mkdir -p %{buildroot}
 cp -a * %{buildroot}
 
 
-#echo "start clean"
-#%clean
-#rm -rf %{buildroot}
+echo "start clean"
+%clean
+rm -rf %{buildroot}
 
 #https://rpm-packaging-guide.github.io/#rpm-packaging-tools --> go to Scriptlets and Triggers for systemd installation
 echo "start systemd"
-%systemd_post stackable-agent.service
-sleep 10
+%systemd_post stackable-agentd.service
+
 
 #%preun
 #%systemd_preun stackable-agent.service
 
 #%postun
 #%systemd_postun_with_restart stackable-agent.service
-
-#%post
-#%systemd_post stackable-agent.service
-    #/usr/bin/systemctl daemon-reload
 
 #%defattr(file mode, user, group, dir mode)
 #The %defattr directive allows setting of default attributes for files and directives.
