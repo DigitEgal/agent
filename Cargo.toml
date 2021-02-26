@@ -58,11 +58,11 @@ codegen-units = 1
 package = "stackable-agent"
 
 [package.metadata.rpm.cargo]
-buildflags = ["--release"]
+buildflags = ["--release -v"]
 
 [package.metadata.rpm.targets]
-agent = { path = "agent" }
-agentd = { path = "agentd" }
+agent = { path = "/usr/bin/agent" }
+agentd = { path = "/usr/bin/agentd" }
 
 [package.metadata.rpm.files]
 "stackable-agentd.service" = { path = "/etc//systemd/system/stackable-agentd.service", mode = "644" }
