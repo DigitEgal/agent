@@ -1,8 +1,7 @@
 %define __spec_install_post %{nil}
 %define __os_install_post %{_dbpath}/brp-compress
 %define debug_package %{nil}
-#https://rpm-packaging-guide.github.io/#rpm-packaging-tools --> go to Scriptlets and Triggers for systemd installation
-#BuildRequires: systemd-rpm-macros
+
 
 Name: stackable-agent
 Summary: An Agent to orchestrate a big data tools
@@ -38,7 +37,9 @@ echo "start clean"
 %clean
 rm -rf %{buildroot}
 
+#https://rpm-packaging-guide.github.io/#rpm-packaging-tools --> go to Scriptlets and Triggers for systemd installation
 echo "start systemd"
+sleep 10
 #%systemd_post stackable-agent.service
 
 #%preun
@@ -50,18 +51,6 @@ echo "start systemd"
 #%post
 #%systemd_post stackable-agent.service
     #/usr/bin/systemctl daemon-reload
-
-
-
-#echo "start files"
-#%files
-#/opt/stackable-agent/agent
-#/etc/stackable-agent/agent.conf
-#/etc/systemd/system/stackable-agent.service
-#%dir /var/lib/stackable/data
-#%dir /var/lib/stackable/config
-#%dir /var/lib/stackable/packages
-
 
 #%defattr(file mode, user, group, dir mode)
 #The %defattr directive allows setting of default attributes for files and directives.
