@@ -2,7 +2,7 @@
 %define __os_install_post %{_dbpath}/brp-compress
 %define debug_package %{nil}
 #https://rpm-packaging-guide.github.io/#rpm-packaging-tools --> go to Scriptlets and Triggers for systemd installation
-BuildRequires: systemd-rpm-macros
+#BuildRequires: systemd-rpm-macros
 
 Name: stackable-agent
 Summary: An Agent to orchestrate a big data tools
@@ -12,11 +12,9 @@ License: ASL 2.0
 Group: Applications/System
 Source0: %{name}-%{version}.tar.gz
 
-# put required packages here
+# put required packages/macros here
 Requires: rpm-build >= 4
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
+BuildRequires: systemd
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
