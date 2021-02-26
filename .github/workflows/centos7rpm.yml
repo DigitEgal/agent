@@ -3,7 +3,7 @@ name: Centos7-rpm
 on:
   push:
     branches:
-      - feature/use-githubActions-for-build
+      - feature/Build-and-publish-RPM-packages
   pull_request:
   workflow_dispatch:
 
