@@ -33,22 +33,30 @@ mkdir -p %{buildroot}
 cp -a * %{buildroot}
 #install -m 0755 %{name} /opt/stackable-agent-<version>/agent
 
-%post
 %systemd_post stackable-agent.service
-    /usr/bin/systemctl daemon-reload
+
+%preun
+%systemd_preun stackable-agent.service
+
+%postun
+%systemd_postun_with_restart stackable-agent.service
+
+#%post
+#%systemd_post stackable-agent.service
+    #/usr/bin/systemctl daemon-reload
 
 echo "start clean"
 %clean
 rm -rf %{buildroot}
 
-echo "start files"
-%files
-/opt/stackable-agent/agent
-/etc/stackable-agent/agent.conf
-/etc/systemd/system/stackable-agent.service
-%dir /var/lib/stackable/data
-%dir /var/lib/stackable/config
-%dir /var/lib/stackable/packages
+#echo "start files"
+#%files
+#/opt/stackable-agent/agent
+#/etc/stackable-agent/agent.conf
+#/etc/systemd/system/stackable-agent.service
+#%dir /var/lib/stackable/data
+#%dir /var/lib/stackable/config
+#%dir /var/lib/stackable/packages
 
 
 #%defattr(file mode, user, group, dir mode)
@@ -58,5 +66,12 @@ echo "start files"
 #The default group id.
 #The default permissions, or "mode" for directories.
 
-%defattr(-,root,root,-)
+#%defattr(-,root,root,-)
 #/src/bin/*
+
+%defattr(-,root,root,-)
+%{_bindir}/*
+%{_sbindir}/*
+%{_unitdir}/stackable-agent.service
+%attr(0644,root,root) %config(noreplace) /etc/stackable-agent/agent.conf
+%attr(0644,root,root) %config(noreplace) /etc/systemd/system/stackable-agent.service
