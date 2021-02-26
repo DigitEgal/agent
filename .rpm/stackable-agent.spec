@@ -39,13 +39,13 @@ echo "start clean"
 rm -rf %{buildroot}
 
 echo "start systemd"
-%systemd_post stackable-agent.service
+#%systemd_post stackable-agent.service
 
-%preun
-%systemd_preun stackable-agent.service
+#%preun
+#%systemd_preun stackable-agent.service
 
-%postun
-%systemd_postun_with_restart stackable-agent.service
+#%postun
+#%systemd_postun_with_restart stackable-agent.service
 
 #%post
 #%systemd_post stackable-agent.service
