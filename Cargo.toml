@@ -58,7 +58,7 @@ codegen-units = 1
 package = "stackable-agent"
 
 [package.metadata.rpm.cargo]
-buildflags = ["--release -v"]
+buildflags = ["--release"]
 
 [package.metadata.rpm.targets]
 agent = { path = "/usr/bin/agent" }
