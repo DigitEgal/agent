@@ -14,6 +14,9 @@ Source0: %{name}-%{version}.tar.gz
 
 # put required packages here
 Requires: rpm-build >= 4
+Requires(post): systemd
+Requires(preun): systemd
+Requires(postun): systemd
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
