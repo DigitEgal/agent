@@ -34,6 +34,10 @@ mkdir -p %{buildroot}
 cp -a * %{buildroot}
 #install -m 0755 %{name} /opt/stackable-agent-<version>/agent
 
+echo "start clean"
+%clean
+rm -rf %{buildroot}
+
 echo "start systemd"
 %systemd_post stackable-agent.service
 
@@ -47,9 +51,7 @@ echo "start systemd"
 #%systemd_post stackable-agent.service
     #/usr/bin/systemctl daemon-reload
 
-echo "start clean"
-%clean
-rm -rf %{buildroot}
+
 
 #echo "start files"
 #%files
