@@ -12,14 +12,21 @@ License: ASL 2.0
 Group: Applications/System
 Source0: %{name}-%{version}.tar.gz
 
+# put required packages here
+Requires: rpm-build >= 4
+
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 %{summary}
 
+echo "start prep"
 %prep
+
+echo "start setup"
 %setup -q
 
+echo "start install"
 %install
 #rm -rf %{buildroot}
 mkdir -p %{buildroot}
@@ -32,9 +39,11 @@ cp -a %{buildroot}
 #%systemd_post stackable-agent.service
 #    /usr/bin/systemctl daemon-reload
 
+echo "start clean"
 %clean
 rm -rf %{buildroot}
 
+echo "start files"
 %files
 /etc/stackable/agent/agent.conf
 /etc/systemd/system/stackable-agent.service
