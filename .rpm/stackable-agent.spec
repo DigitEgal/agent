@@ -28,11 +28,9 @@ echo "start setup"
 
 echo "start install"
 %install
-#rm -rf %{buildroot}
+rm -rf %{buildroot}
 mkdir -p %{buildroot}
 cp -a * %{buildroot}
-#ls -al %{buildroot}
-cp -a %{buildroot}
 #install -m 0755 %{name} /opt/stackable-agent-<version>/agent
 
 #%post
