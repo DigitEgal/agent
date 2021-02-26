@@ -61,8 +61,8 @@ package = "stackable-agent"
 buildflags = ["--release"]
 
 [package.metadata.rpm.targets]
-agent = { path = "/usr/bin/agent" }
-agentd = { path = "/usr/bin/agentd" }
+agent = { path = "/target/release/agent" }
+agentd = { path = "/target/release/agentd" }
 
 [package.metadata.rpm.files]
 "stackable-agentd.service" = { path = "/etc//systemd/system/stackable-agentd.service", mode = "644" }
