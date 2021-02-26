@@ -2,7 +2,6 @@
 %define __os_install_post %{_dbpath}/brp-compress
 %define debug_package %{nil}
 
-
 Name: stackable-agent
 Summary: An Agent to orchestrate a big data tools
 Version: @@VERSION@@
@@ -26,15 +25,12 @@ echo "start prep"
 echo "start setup"
 %setup -q
 
-sleep 10
-
 echo "start install"
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}
 cp -a * %{buildroot}
-#install -m 0755 %{name} /opt/stackable-agent-<version>/agent
-sleep 5
+
 
 #echo "start clean"
 #%clean
@@ -42,9 +38,9 @@ sleep 5
 
 #https://rpm-packaging-guide.github.io/#rpm-packaging-tools --> go to Scriptlets and Triggers for systemd installation
 echo "start systemd"
-sleep 5
 %systemd_post stackable-agent.service
-sleep 5
+sleep 10
+
 #%preun
 #%systemd_preun stackable-agent.service
 
