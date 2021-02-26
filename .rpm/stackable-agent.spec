@@ -33,9 +33,9 @@ mkdir -p %{buildroot}
 cp -a * %{buildroot}
 #install -m 0755 %{name} /opt/stackable-agent-<version>/agent
 
-#%post
-#%systemd_post stackable-agent.service
-#    /usr/bin/systemctl daemon-reload
+%post
+%systemd_post stackable-agent.service
+    /usr/bin/systemctl daemon-reload
 
 echo "start clean"
 %clean
@@ -43,8 +43,12 @@ rm -rf %{buildroot}
 
 echo "start files"
 %files
-/etc/stackable/agent/agent.conf
+/opt/stackable-agent/agent
+/etc/stackable-agent/agent.conf
 /etc/systemd/system/stackable-agent.service
+%dir /var/lib/stackable/data
+%dir /var/lib/stackable/config
+%dir /var/lib/stackable/packages
 
 
 #%defattr(file mode, user, group, dir mode)
