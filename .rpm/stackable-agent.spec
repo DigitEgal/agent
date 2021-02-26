@@ -26,12 +26,15 @@ echo "start prep"
 echo "start setup"
 %setup -q
 
+sleep 10
+
 echo "start install"
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}
 cp -a * %{buildroot}
 #install -m 0755 %{name} /opt/stackable-agent-<version>/agent
+sleep 10
 
 echo "start clean"
 %clean
