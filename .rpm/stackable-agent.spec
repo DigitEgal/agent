@@ -34,6 +34,7 @@ mkdir -p %{buildroot}
 cp -a * %{buildroot}
 #install -m 0755 %{name} /opt/stackable-agent-<version>/agent
 
+echo "start systemd"
 %systemd_post stackable-agent.service
 
 %preun
